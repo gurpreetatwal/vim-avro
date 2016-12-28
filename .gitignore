@@ -12,4 +12,6 @@ tags
 .netrwhist
 Session.vim
 [._]s[a-w][a-z]
+[._]*.sw[a-p]
+[._]*.s[a-v][a-z]
 [._]*.]s[a-w][a-z]]
