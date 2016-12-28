@@ -3,7 +3,15 @@
 " Maintainer:   Gurpreet Atwal<git@gatwal.com>
 " Filenames:    *.avdl
 " Last Change:  2016 Dec 28
-" Version:      0.1
+" Version:      0.2
+
+" For version 5.x: Clear all syntax items
+" For version 6.x: Quit when a syntax file was already loaded
+if version < 600
+  syntax clear
+elseif exists("b:current_syntax")
+  finish
+endif
 
 syn case match
 
@@ -31,17 +39,31 @@ syn region avroEscaped  start=/`/ end=/`/
 syn keyword avroStatement throws oneway
 syn keyword avroType array boolean bytes double float int long map null string void
 
-hi def link avroAnnotation Default
-hi def link avroComment Comment
-hi def link avroDefault Default
-hi def link avroEscaped Default
-hi def link avroFixedDeclaration Statement
-hi def link avroFixedName Identifier
-hi def link avroMessageDeclaration Identifier
-hi def link avroStatement Statement
-hi def link avroTodo Todo
-hi def link avroType Type
-hi def link avroTypeDeclaration Statement
-hi def link avroTypeName Identifier
+" For version 5.7 and earlier: only when not done already
+" For version 5.8 and later: only when an item doesn't have highlighting yet
+if version >= 508 || !exists("did_avdl_syn_inits")
+
+  if version < 508
+    let did_avdl_syn_inits = 1
+    command -nargs=+ HiLink hi link <args>
+  else
+    command -nargs=+ HiLink hi def link <args>
+  endif
+
+  HiLink avroAnnotation Default
+  HiLink avroComment Comment
+  HiLink avroDefault Default
+  HiLink avroEscaped Default
+  HiLink avroFixedDeclaration Statement
+  HiLink avroFixedName Identifier
+  HiLink avroMessageDeclaration Identifier
+  HiLink avroStatement Statement
+  HiLink avroTodo Todo
+  HiLink avroType Type
+  HiLink avroTypeDeclaration Statement
+  HiLink avroTypeName Identifier
+
+  delcommand HiLink
+endif
 
 let b:current_syntax = 'avdl'
