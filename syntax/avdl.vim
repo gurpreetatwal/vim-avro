@@ -1,8 +1,9 @@
-" Syntax file for Avro IDL files.
-
-if exists('b:current_syntax')
-  finish
-endif
+" Vim syntax file
+" Language:     Apache Avro
+" Maintainer:   Gurpreet Atwal<git@gatwal.com>
+" Filenames:    *.avdl
+" Last Change:  2016 Dec 28
+" Version:      0.1
 
 syn case match
 
