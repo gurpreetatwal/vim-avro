@@ -38,6 +38,7 @@ syn region avroDefaultRegion matchgroup=avroDefault start=/\v\=/ end=/\v,|\)|;/ 
 syn region avroEscaped  start=/`/ end=/`/
 syn keyword avroStatement throws oneway
 syn keyword avroType array boolean bytes double float int long map null string void
+syn keyword avroLogicalType decimal date time_ms timestamp_ms
 
 " For version 5.7 and earlier: only when not done already
 " For version 5.8 and later: only when an item doesn't have highlighting yet
@@ -60,6 +61,7 @@ if version >= 508 || !exists("did_avdl_syn_inits")
   HiLink avroStatement Statement
   HiLink avroTodo Todo
   HiLink avroType Type
+  HiLink avroLogicalType Type
   HiLink avroTypeDeclaration Statement
   HiLink avroTypeName Identifier
 
